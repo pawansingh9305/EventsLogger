@@ -2,13 +2,13 @@
 ## Run npm i nodemon
 ## Run nodemon index.js
 
-## 'on' -> emit any event over on button like mouseover,click,doubleclick etc. 
+## 'on' -> emit any event over 'on!' button like mouseover,click,doubleclick etc. 
 #The custom on event of the Events class will be called and it will add the corresponding event handler to the object of handler with particular event name;
 
-## 'trigger' -> emit any event over trigger button like mouseover,click,doubleclick etc.
+## 'trigger' -> emit any event over 'trigger!' button like mouseover,click,doubleclick etc.
 #The custom trigger event of the Events class will be called and it call all the event handlers of the corresponding eventname is the particular event is in 'on' state.It will also add the log to the 'app.log' file and mongodb collection
 
-## 'off' -> emit any event over trigger button like mouseover,click,doubleclick etc.
+## 'off' -> emit any event over 'off!' button like mouseover,click,doubleclick etc.
 #The custom off event of the Events class will be called and it will delete all the event handlers of the corresponding eventname if that event is in 'on' state.It will also update the 'app.log' file and mongodb collection
 
 
