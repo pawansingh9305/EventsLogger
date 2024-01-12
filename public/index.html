@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Handling App</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="innerContainer">
+      <h1>Event Logger App</h1>
+      <button id="myButton">On!</button>
+      <button id="myButton2">Trigger!</button>
+      <button id="myButton3">Off!</button>
+    </div>
+  </div>
+    <script src="events.js"></script>
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      const targetElement = document.getElementById('myButton');
+
+      function handleEvent(event) {
+        fetch('/onEvent', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({ 'eventName': event.type }),
+        })
+        .then(response => response.text())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+      }
+
+      
+      const eventTypes = ['click', 'keydown', 'dblclick','customEvent'];
+
+      eventTypes.forEach(eventType => {
+        targetElement.addEventListener(eventType, handleEvent);
+      });
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+      const targetElement = document.getElementById('myButton2');
+
+      function handleEvent(event) {
+        fetch('/triggerCallbacks', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({ 'eventName': event.type }),
+        })
+        .then(response => response.text())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+      }
+
+      
+      const eventTypes = ['click', 'mouseover', 'keydown', 'dblclick','customEvent'];
+
+      eventTypes.forEach(eventType => {
+        targetElement.addEventListener(eventType, handleEvent);
+      });
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+      const targetElement = document.getElementById('myButton3');
+
+      function handleEvent(event) {
+        fetch('/offEvents', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({ 'eventName': event.type }),
+        })
+        .then(response => response.text())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+      }
+
+      const eventTypes = ['click', 'mouseover', 'keydown', 'dblclick','customEvent'];
+
+      eventTypes.forEach(eventType => {
+        targetElement.addEventListener(eventType, handleEvent);
+      });
+    });
+
+</script>
+</body>
+</html>
